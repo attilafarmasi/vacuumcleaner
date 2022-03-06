@@ -1,29 +1,50 @@
-# Minta repó saját projektekhez
-## Használat
-* https://github.com/progmatic-java/oop-template
-* `Use this template` gombra kattintás
-* Repozitory nevének megadása
-* `Create repository from template` gombra kattintás
-* `Code` / clone..
-* Az idea elvileg felismeri, ha le tudod futtatni a `HelloWorldTest`-et, akkor működik is
-* Amennyiben nem, akkor a `pom.xml`-en jobb klikk, majd `Add as maven project`
+# Robot vacuum cleaner
+## Goal
+* create a program, which can help vacuum-cleaners to clean up the whole area
 
-## Javaslatok, konvenciók
-* Ami nem kell, töröljétek nyugodtan
-* Tartsátok karban a README-t, legalább annyira hogy a projekt célja le legyen írva benne
-* Saját projekteknél nem kötelező a TDD módszertan használata, de ha úgy érzitek hogy segít, akkor bármelyik projektnél vagy házinál alkalmazhatjátok
-* Ha nem TDD-ztek, akkor is nyugodtan írjatok egy-egy tesztet, amennyiben az segíti a fejlesztést vagy a hibakeresést - vagy csak megnyugtat hogy tudjátok hogy jó az adott függvény / osztály
-## Tartalom
-### `.gitignore`
-Itt lehet beállítani, hogy mely fájlokat nem akarjuk feltölteni.
-### `pom.xml`
-A maven leíró fájl, ez a projekt összeállítását segíti.
-Erről fogunk részletesebben is tanulni a spring résznél,
-ott már szükségetek lesz a megértésére is, addig csak
-örüljetek hogy nem kell vele foglalkozni :)
-### `src/main/java/hu/progmatic/Main.java`
-Futtatható minta osztály, `main` metódussal
-### `src/main/java/hu/progmatic/HelloWorld.java`
-Minta osztály, teszttel.
-### `src/test/java/hu/progmatic/HelloWorldTest.java`
-Minta teszt.
+## Methods
+* clean() = clean the actual cell
+* turnLeft() / turnRight() = vacuum-cleaner will stay on the same cell after calling turnLeft / turnRight (each turn will be 90 degrees)
+* move() = returns true if next cell is free and vacuum-cleaner moves into the cell - returns false if next cell is obstacle and vacuum-cleaner stays on the actual cell
+* visited() = returns true if cell is already cleaned
+* moveBack() = cell is already cleaned, move back to the previous cell
+* dfs() =
+
+## Angles
+* 0 (degree) = looking to the right
+* 90 (degree) = looking to the top
+* 180 (degree) = looking to the left
+* 270 (degree) = looking to the bottom
+
+## 2D view of the dirty area
+
+     0   1   2   3
+-------------------
+ 0 | W | D | W | D
+-------------------
+ 1 | D | DS | D | D
+-------------------
+ 2 | D | W | W | D
+-------------------
+ 3 | D | D | D | D
+-------------------
+* D = dirty area
+* W = wall or obstacle (fixed)
+* S = strating point - can not be wall or obstacle
+
+## 2D view of the cleaned area
+
+     0   1   2   3
+-------------------
+0 | W | C | W | C
+-------------------
+1 | C | CE | C | C
+-------------------
+2 | C | W | W | C
+-------------------
+3 | C | C | C | C
+-------------------
+* C = cleaned area
+* W = wall or obstacle (fixed)
+* E = ending point
+
