@@ -36,7 +36,7 @@ public class RobotVacuumCleaner {
             moveBack();
             return;
         }
-        System.out.println("Calling cleaningProcess on cell (" + row + "," + col + ")");
+        System.out.println("Sarting cleaningProcess on (" + row + "," + col + ")");
         clean();
         if (move()) {
             cleaningProcess();
@@ -55,13 +55,13 @@ public class RobotVacuumCleaner {
         }
         turnLeft();
         if (angle == startingAngle && row == startingRow && col == startingCol) {
-            System.out.println("Cleaned up all cells and back to starting point.");
+            System.out.println("Cleaned all the cells and back to starting point.");
             System.out.println("Cleaned cells: " + cleanedCells.toString());
             System.out.println(Arrays.deepToString(room));
-            System.out.println("Program Complete.");
+            System.out.println("The area is completely clean and we are happy!");
             return;
         }
-        System.out.println("Explored all directions for current cell (" + row + "," + col + ")");
+        System.out.println("Explored all directions (" + row + "," + col + ")");
         System.out.println("Moving back to previous cell");
         moveBack();
     }
@@ -109,20 +109,20 @@ public class RobotVacuumCleaner {
     }
 
     private void turnLeft() {
-        System.out.println("Current Orientation: " + angle);
+        System.out.println("Current Direction: " + angle);
         angle = (angle + 90) % 360;
-        System.out.println("Turned Left. New Orientation: " + angle);
+        System.out.println("Turned Left. New Direction: " + angle);
     }
 
     private void turnRight() {
-        System.out.println("Current Orientation: " + angle);
+        System.out.println("Current Direction: " + angle);
         if (angle == 0) {
             angle = 270;
-            System.out.println("Turned Right. New Orientation: " + angle);
+            System.out.println("Turned Right. New Direction: " + angle);
             return;
         }
         angle = (angle - 90) % 360;
-        System.out.println("New Orientation: " + angle);
+        System.out.println("New Direction: " + angle);
     }
 
     private void clean() {
@@ -134,8 +134,8 @@ public class RobotVacuumCleaner {
     }
 
     private boolean visited() {
-        String pair = "(" + row + "," + col + ")";
-        if (cleanedCells.contains(pair)) {
+        String cell = "(" + row + "," + col + ")";
+        if (cleanedCells.contains(cell)) {
             System.out.println("Current cell (" + row + "," + col + ") is already cleaned. Move back to previous cell");
             return true;
         }

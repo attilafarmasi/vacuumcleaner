@@ -15,7 +15,7 @@ public class Main {
         RobotVacuumCleaner protoType = new RobotVacuumCleaner(90, 5, 1, myApartment);
 
         if (myApartment[protoType.getStartingRow()][protoType.getStartingCol()].equals("W")) {
-            System.out.println("Wrong starting point: wall or obstacle!");
+            System.out.println("Wrong starting point: Wall or Obstacle!");
             System.out.println("Please set the vacuum-cleaner to a free cell!");
             return;
         }
